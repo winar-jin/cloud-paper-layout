@@ -15,9 +15,9 @@
 <body>
     <main class="container">
         <section class="form sign-in">
-            <h2>请输入房间密码以加入演示</h2>
+            <h2>请输入房间令牌以加入演示</h2>
             <label>
-                <span>房间密码</span>
+                <span>房间令牌</span>
                 <input type="text" />
             </label>
             <button type="button" class="submit">加入房间</button>
@@ -37,23 +37,13 @@
                     <span class="aside--signin">加入房间</span>
                 </div>
             </aside>
-            <div class="form sign-up">
-                <h2>请输入房间密码以创建房间</h2>
-                <label>
-                    <span>房间密码</span>
-                    <input type="text" />
-                </label>
-                <button type="button" class="submit">创建房间</button>
-            </div>
         </section>
     </main>
 
 
 
     <script>
-        document.querySelector('.aside__btn').addEventListener('click', function () {
-            document.querySelector('.container').classList.toggle('switch--signup');
-        });
+        
     </script>
 </body>
 
