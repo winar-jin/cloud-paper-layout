@@ -1,5 +1,5 @@
 # cloud-paper-ui
-cloud-paper 前端界面
+cloud-paper UI设计稿
 
 文件目录结构：
 
