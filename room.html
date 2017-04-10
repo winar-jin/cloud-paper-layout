@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>演示间--☁️云纸条</title>
+    <meta name="keywords" content="cloud paper">
+    <meta name="description" content="cloud paper">
+    <link rel="stylesheet" type="text/css" href="style/normalize.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+</head>
+
+<body>
+    <main class="container" id="room">
+        <header class="header">
+            <div class="header__warp">
+                <span>☁️云纸条</span>
+                <span class="header__warp--living">房间正在直播中...</span>
+                <span class="header__warp--stopping">当前房间尚未直播...</span>
+                <span class="header__warp--sharing toggle"><img src="img/sharing.png"></span>
+                <div class="header__warp--dropdown">
+                    <div class="dropdown--cover">
+                        <div class="dropdown--container">
+                            <p class="dropdown--inviate">快邀请小伙伴加入房间吧！</p>
+                            <p class="dropdown--token">XHDJFKHYEDKSDHF</p>
+                            <button class="dropdown--copy" type="button">点击复制令牌号</button>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </header>
+        <section class="paint">
+            <canvas id=""></canvas>
+            <aside class="paint__tool">
+                <ul>
+                    <li><img src="img/pencil.png"></li>
+                    <li><img src="img/eraser.png" alt=""></li>
+                </ul>
+            </aside>
+        </section>
+    </main>
+
+
+    <script>
+        document.querySelector('.header__warp--sharing').addEventListener('click', (e) => {
+            console.log(e.target);
+            document.querySelector('.header__warp--sharing').classList.toggle("toggle");
+        });
+    </script>
+</body>
+
+</html>
