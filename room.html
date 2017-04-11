@@ -10,9 +10,12 @@
     <meta name="description" content="cloud paper">
     <link rel="stylesheet" type="text/css" href="style/normalize.css">
     <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/jquery.classycolor.min.css" />
+    <script src='js/jquery-2.1.1.min.js'></script>
+    <script src='js/jquery.classycolor.min.js'></script>
 </head>
 
-<body class="">
+<body>
     <main class="container" id="room">
         <header class="header">
             <div class="header__warp">
@@ -33,6 +36,7 @@
             </div>
         </header>
         <section class="paint">
+            <span class="paint__tools--cursor"></span>
             <canvas id=""></canvas>
             <aside class="paint__tool">
                 <ul>
@@ -40,6 +44,7 @@
                         <img src="img/pencil.png">
                         <div class="slider__range--container pencil">
                             <input class="slider__vertical" type="range" min="0" max="100" />
+                            <div class="colorpicker"></div>
                         </div>
                     </li>
                     <li>
@@ -65,13 +70,39 @@
                 if (e.target.nodeName === 'LI' || e.target.nodeName === 'IMG') {
                     let container = element.querySelector('.slider__range--container');
                     container.classList.toggle('active');
-                    if(container.className.includes('pencil')){
-                        document.body.className = 'pencil--using';
-                    } else if(container.className.includes('eraser')) {
-                        document.body.className = 'eraser--using';
+                    if (container.className.includes('pencil')) {
+                        // document.body.className = 'pencil--using';
+                        let pencilWidth = document.querySelector(
+                            '.slider__range--container.pencil input').value;
+                        document.querySelector('section.paint').classList.add('cursor--cancel');
+                        document.querySelector('.paint .paint__tools--cursor').classList.remove(
+                            'eraser');
+                        document.querySelector('.paint .paint__tools--cursor').classList.add('pencil');
+                    } else if (container.className.includes('eraser')) {
+                        // document.body.className = 'eraser--using';
+                        document.querySelector('section.paint').classList.add('cursor--cancel');
+                        document.querySelector('.paint .paint__tools--cursor').classList.remove(
+                            'pencil');
+                        document.querySelector('.paint .paint__tools--cursor').classList.add('eraser');
                     }
                 }
             }, false);
+        });
+        document.querySelector('section.paint').addEventListener('mousemove', (e) => {
+            let topX = e.clientY - 70;
+            let leftX = e.clientX - ((window.innerWidth - document.querySelector('section.paint').offsetWidth) /
+                2);
+            document.querySelector('.paint .paint__tools--cursor').style.top = `${topX}px`;
+            document.querySelector('.paint .paint__tools--cursor').style.left = `${leftX}px`;
+        });
+        $(document).ready(function () {
+            $('.slider__range--container .colorpicker').ClassyColor({
+                color: '#A98C61',
+                colorSpace: 'rgba',
+                labels: true,
+                staticComponents: true,
+                displayColor: 'css',
+            });
         });
     </script>
 </body>

@@ -14,11 +14,8 @@ body {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif; }
 
-.pencil--using {
-  cursor: url("../img/pencil.ico"), default !important; }
-
-.eraser--using {
-  cursor: url("../img/eraser.ico"), default !important; }
+.cursor--cancel {
+  cursor: none; }
 
 .container {
   overflow: hidden;
@@ -344,6 +341,26 @@ body {
   transform: translate3d(-50%, 0, 0);
   z-index: 1;
   box-shadow: 0 0 10px rgba(204, 204, 204, 0.5); }
+  #room .paint .paint__tools--cursor {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    #room .paint .paint__tools--cursor.pencil {
+      display: block;
+      width: 20px;
+      height: 20px;
+      box-shadow: 0 0 10px rgba(204, 204, 204, 0.5);
+      background: rgba(200, 200, 200, 0.4);
+      border-radius: 50%; }
+    #room .paint .paint__tools--cursor.eraser {
+      display: block;
+      width: 25px;
+      height: 35px;
+      box-shadow: 0 0 10px rgba(204, 204, 204, 0.5);
+      background: rgba(200, 200, 200, 0.4);
+      border-radius: 5px 5px 15px 5px;
+      transform: rotate(40deg); }
   #room .paint .paint__tool {
     width: 50px;
     background: white;
@@ -382,8 +399,19 @@ body {
         border: 2px solid transparent;
         top: 0px;
         left: -45px;
-        height: 203px;
-        width: 33px; }
+        height: 231px;
+        width: 30px; }
+        #room .paint .paint__tool li .slider__range--container .colorpicker {
+          position: absolute;
+          width: 30px;
+          border-radius: 50%;
+          height: 30px;
+          background: rgba(169, 140, 97, 0.5);
+          right: -2px;
+          bottom: -4px;
+          box-shadow: 0 0 25px #ccc; }
+          #room .paint .paint__tool li .slider__range--container .colorpicker.ClassyColor {
+            font-size: 4px !important; }
         #room .paint .paint__tool li .slider__range--container.pencil {
           display: none; }
         #room .paint .paint__tool li .slider__range--container.eraser {
@@ -401,7 +429,7 @@ body {
         #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical {
           border: none;
           position: absolute;
-          left: -88px;
+          left: -87px;
           top: 82px;
           transform: rotate(90deg);
           -webkit-appearance: none;
