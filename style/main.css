@@ -14,6 +14,12 @@ body {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif; }
 
+.pencil--using {
+  cursor: url("../img/pencil.ico"), default !important; }
+
+.eraser--using {
+  cursor: url("../img/eraser.ico"), default !important; }
+
 .container {
   overflow: hidden;
   position: relative;
@@ -351,6 +357,7 @@ body {
     #room .paint .paint__tool ul {
       list-style: none; }
     #room .paint .paint__tool li {
+      position: relative;
       width: 50px;
       height: 50px; }
       #room .paint .paint__tool li:first-child {
@@ -362,14 +369,112 @@ body {
           animation-duration: 800ms;
           animation-name: jump;
           animation-timing-function: ease-in-out;
-          animation-delay: 0;
-          animation-iteration-count: infinite; }
+          animation-delay: 0; }
       #room .paint .paint__tool li img {
         width: 30px;
         height: 30px;
         margin: 10px;
         position: relative;
         top: 0px; }
+      #room .paint .paint__tool li .slider__range--container {
+        position: absolute;
+        border-radius: 15px;
+        border: 2px solid transparent;
+        top: 0px;
+        left: -45px;
+        height: 203px;
+        width: 33px; }
+        #room .paint .paint__tool li .slider__range--container.pencil {
+          display: none; }
+        #room .paint .paint__tool li .slider__range--container.eraser {
+          display: none; }
+        #room .paint .paint__tool li .slider__range--container.active {
+          display: block; }
+        #room .paint .paint__tool li .slider__range--container::after {
+          position: absolute;
+          z-index: -1;
+          right: -18px;
+          top: 15px;
+          content: '';
+          border: 10px solid #d4af7a;
+          border-color: transparent transparent transparent #d4af7a; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical {
+          border: none;
+          position: absolute;
+          left: -88px;
+          top: 82px;
+          transform: rotate(90deg);
+          -webkit-appearance: none;
+          width: 200px;
+          margin: 0px 0;
+          padding: 0; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical:focus {
+          outline: none; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 30px;
+          cursor: pointer;
+          box-shadow: 0 0 25px #ccc;
+          background: #d4af7a;
+          border-radius: 15px;
+          border: 0px solid rgba(204, 204, 204, 0.23); }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-webkit-slider-thumb {
+          box-shadow: 0px 0px 5px rgba(0, 0, 62, 0.67), 0px 0px 0px rgba(0, 0, 88, 0.67);
+          border: 1.2px solid rgba(204, 204, 204, 0.57);
+          height: 30px;
+          width: 30px;
+          border-radius: 15px;
+          background: rgba(255, 255, 255, 0.5);
+          cursor: pointer;
+          -webkit-appearance: none;
+          margin-top: 0px; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical:focus::-webkit-slider-runnable-track {
+          background: #d4af7a; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-moz-range-track {
+          width: 100%;
+          height: 30px;
+          cursor: pointer;
+          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+          background: #d4af7a;
+          border-radius: 15px;
+          border: 0px solid rgba(0, 0, 0, 0.23); }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-moz-range-thumb {
+          box-shadow: 0px 0px 5px rgba(0, 0, 62, 0.67), 0px 0px 0px rgba(0, 0, 88, 0.67);
+          border: 1.2px solid rgba(0, 30, 0, 0.57);
+          height: 30px;
+          width: 30px;
+          border-radius: 15px;
+          background: rgba(255, 255, 255, 0.5);
+          cursor: pointer; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-ms-track {
+          width: 100%;
+          height: 30px;
+          cursor: pointer;
+          background: transparent;
+          border-color: transparent;
+          color: transparent; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-ms-fill-lower {
+          background: #d4af7a;
+          border: 0px solid rgba(0, 0, 0, 0.23);
+          border-radius: 30px;
+          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-ms-fill-upper {
+          background: #d4af7a;
+          border: 0px solid rgba(0, 0, 0, 0.23);
+          border-radius: 30px;
+          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical::-ms-thumb {
+          box-shadow: 0px 0px 5px rgba(0, 0, 62, 0.67), 0px 0px 0px rgba(0, 0, 88, 0.67);
+          border: 1.2px solid rgba(0, 30, 0, 0.57);
+          width: 30px;
+          border-radius: 15px;
+          background: rgba(255, 255, 255, 0.5);
+          cursor: pointer;
+          height: 30px; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical:focus::-ms-fill-lower {
+          background: #d4af7a; }
+        #room .paint .paint__tool li .slider__range--container input[type=range].slider__vertical:focus::-ms-fill-upper {
+          background: #d4af7a; }
 
 @keyframes jump {
   33% {

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="style/main.css">
 </head>
 
-<body>
+<body class="">
     <main class="container" id="room">
         <header class="header">
             <div class="header__warp">
@@ -24,11 +24,11 @@
                     <div class="dropdown--cover">
                         <div class="dropdown--container">
                             <p class="dropdown--inviate">快邀请小伙伴加入房间吧！</p>
-                            <p class="dropdown--token">XHDJFKHYEDKSDHF</p>
+                            <p id="room-tooken" class="dropdown--token">XHDJFKHYEDKSDHF</p>
                             <button class="dropdown--copy" type="button">点击复制令牌号</button>
                         </div>
                     </div>
-    
+
                 </div>
             </div>
         </header>
@@ -36,8 +36,18 @@
             <canvas id=""></canvas>
             <aside class="paint__tool">
                 <ul>
-                    <li><img src="img/pencil.png"></li>
-                    <li><img src="img/eraser.png" alt=""></li>
+                    <li>
+                        <img src="img/pencil.png">
+                        <div class="slider__range--container pencil">
+                            <input class="slider__vertical" type="range" min="0" max="100" />
+                        </div>
+                    </li>
+                    <li>
+                        <img src="img/eraser.png">
+                        <div class="slider__range--container eraser">
+                            <input class="slider__vertical" type="range" min="0" max="100" />
+                        </div>
+                    </li>
                 </ul>
             </aside>
         </section>
@@ -46,8 +56,22 @@
 
     <script>
         document.querySelector('.header__warp--sharing').addEventListener('click', (e) => {
-            console.log(e.target);
             document.querySelector('.header__warp--sharing').classList.toggle("toggle");
+        });
+        Array.from(document.querySelectorAll('.paint__tool li')).forEach(element => {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.target.nodeName === 'LI' || e.target.nodeName === 'IMG') {
+                    let container = element.querySelector('.slider__range--container');
+                    container.classList.toggle('active');
+                    if(container.className.includes('pencil')){
+                        document.body.className = 'pencil--using';
+                    } else if(container.className.includes('eraser')) {
+                        document.body.className = 'eraser--using';
+                    }
+                }
+            }, false);
         });
     </script>
 </body>
