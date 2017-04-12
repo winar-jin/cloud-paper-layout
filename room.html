@@ -60,6 +60,13 @@
 
 
     <script>
+        document.body.addEventListener('click',() => {
+            Array.from(document.querySelectorAll('.slider__range--container')).forEach(element => {
+                if(element.className.includes('active')){
+                    element.classList.remove('active');
+                }
+            });
+        });
         document.querySelector('.header__warp--sharing').addEventListener('click', (e) => {
             document.querySelector('.header__warp--sharing').classList.toggle("toggle");
         });
@@ -67,8 +74,8 @@
             element.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                let container = element.querySelector('.slider__range--container');
                 if (e.target.nodeName === 'LI' || e.target.nodeName === 'IMG') {
-                    let container = element.querySelector('.slider__range--container');
                     container.classList.toggle('active');
                     if (container.className.includes('pencil')) {
                         // document.body.className = 'pencil--using';
@@ -78,12 +85,17 @@
                         document.querySelector('.paint .paint__tools--cursor').classList.remove(
                             'eraser');
                         document.querySelector('.paint .paint__tools--cursor').classList.add('pencil');
+                        if(document.querySelector('.slider__range--container.eraser').className.includes('active')){
+                            document.querySelector('.slider__range--container.eraser').classList.remove('active');
+                        }
                     } else if (container.className.includes('eraser')) {
                         // document.body.className = 'eraser--using';
                         document.querySelector('section.paint').classList.add('cursor--cancel');
-                        document.querySelector('.paint .paint__tools--cursor').classList.remove(
-                            'pencil');
+                        document.querySelector('.paint .paint__tools--cursor').classList.remove('pencil');
                         document.querySelector('.paint .paint__tools--cursor').classList.add('eraser');
+                        if(document.querySelector('.slider__range--container.pencil').className.includes('active')){
+                            document.querySelector('.slider__range--container.pencil').classList.remove('active');
+                        }
                     }
                 }
             }, false);
@@ -92,8 +104,15 @@
             let topX = e.clientY - 70;
             let leftX = e.clientX - ((window.innerWidth - document.querySelector('section.paint').offsetWidth) /
                 2);
+
             document.querySelector('.paint .paint__tools--cursor').style.top = `${topX}px`;
             document.querySelector('.paint .paint__tools--cursor').style.left = `${leftX}px`;
+        });
+        document.querySelector('section.paint').addEventListener('mouseleave', (e) => {
+            document.querySelector('span.paint__tools--cursor').style.display = 'none';
+        });
+        document.querySelector('section.paint').addEventListener('mouseenter', (e) => {
+            document.querySelector('span.paint__tools--cursor').style.display = 'block';
         });
         $(document).ready(function () {
             $('.slider__range--container .colorpicker').ClassyColor({
@@ -104,6 +123,56 @@
                 displayColor: 'css',
             });
         });
+        let mousedownFlagPencil = false; // 铅笔--鼠标是否点击标志
+        document.querySelector('.slider__range--container.pencil input.slider__vertical').addEventListener('mousemove',
+            (e) => {
+                if (mousedownFlagPencil) {
+                    document.querySelector('#room .paint .paint__tools--cursor.pencil').style.width =
+                        `${e.target.value}px`;
+                    document.querySelector('#room .paint .paint__tools--cursor.pencil').style.height =
+                        `${e.target.value}px`;
+                }
+            });
+        document.querySelector('.slider__range--container.pencil input.slider__vertical').addEventListener('change',
+            (e) => {
+                document.querySelector('#room .paint .paint__tools--cursor.pencil').style.width =
+                    `${e.target.value}px`;
+                document.querySelector('#room .paint .paint__tools--cursor.pencil').style.height =
+                    `${e.target.value}px`;
+            });
+        document.querySelector('.slider__range--container.pencil input.slider__vertical').addEventListener('mousedown',
+            (e) => {
+                mousedownFlagPencil = true;
+            });
+        document.querySelector('.slider__range--container.pencil input.slider__vertical').addEventListener('mouseup',
+            (e) => {
+                mousedownFlagPencil = false;
+            });
+        let mousedownFlagEraser = false; // 橡皮--是否点击标志
+        document.querySelector('.slider__range--container.eraser input.slider__vertical').addEventListener('mousemove',
+            (e) => {
+                if (mousedownFlagEraser) {
+                    document.querySelector('#room .paint .paint__tools--cursor.eraser').style.width =
+                        `${e.target.value}px`;
+                    document.querySelector('#room .paint .paint__tools--cursor.eraser').style.height =
+                        `${e.target.value}px`;
+                }
+            });
+        document.querySelector('.slider__range--container.eraser input.slider__vertical').addEventListener('change',
+            (e) => {
+                document.querySelector('#room .paint .paint__tools--cursor.eraser').style.width =
+                    `${e.target.value}px`;
+                document.querySelector('#room .paint .paint__tools--cursor.eraser').style.height =
+                    `${e.target.value}px`;
+            });
+        document.querySelector('.slider__range--container.eraser input.slider__vertical').addEventListener('mousedown',
+            (e) => {
+                mousedownFlagEraser = true;
+            });
+        document.querySelector('.slider__range--container.eraser input.slider__vertical').addEventListener('mouseup',
+            (e) => {
+                mousedownFlagEraser = false;
+            });
     </script>
 </body>
 
