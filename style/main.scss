@@ -469,6 +469,8 @@ body {
         }
         .header__container--title {
             height: 45vh;
+            position: relative;
+            z-index: 3;
             h1 {
                 margin: 0;
                 position: relative;
