@@ -324,7 +324,7 @@ body {
     height: 100vh;
     width: 100vw;
     z-index: 3;
-    background: rgba(234, 205, 163, 0.5); }
+    background: rgba(248, 240, 227, 0.5); }
     .container#index__roomList .roomlist__elem--password #popup {
       transition: all 2s ease-in-out;
       height: 40vh;
@@ -334,7 +334,7 @@ body {
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
-      background: rgba(255, 255, 255, 0.8);
+      background: white;
       border-radius: 5vh; }
       .container#index__roomList .roomlist__elem--password #popup.slidein {
         transition: all 2s ease-in-out; }
@@ -357,15 +357,12 @@ body {
           line-height: 2.5;
           color: white;
           background: #E2C6A2;
+          box-shadow: inset 0 0 10px rgba(204, 204, 204, 0.5);
           border-radius: 20px;
           font-size: .7em;
           margin-top: 1em; }
           .container#index__roomList .roomlist__elem--password #popup .modal-content button:hover {
             cursor: pointer; }
-  .container#index__roomList h2 {
-    width: 100%;
-    font-size: 26px;
-    text-align: center; }
   .container#index__roomList input,
   .container#index__roomList button {
     border: none;
@@ -382,7 +379,7 @@ body {
     text-align: center; }
   .container#index__roomList .header__container {
     position: relative;
-    height: 50vh;
+    height: 70vh;
     width: 100vw;
     background-image: url("http://7xss68.com1.z0.glb.clouddn.com/pexels-photo.jpg");
     background-size: cover;
@@ -395,48 +392,61 @@ body {
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.4); }
-    .container#index__roomList .header__container h1 {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
+    .container#index__roomList .header__container .header__container--title {
+      height: 45vh; }
+      .container#index__roomList .header__container .header__container--title h1 {
+        margin: 0;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        color: #e7e7e7;
+        z-index: 2;
+        font-size: 5em;
+        letter-spacing: .3em;
+        text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.4); }
+    .container#index__roomList .header__container .button__container {
+      position: relative;
+      height: 25vh;
+      width: 100vw;
+      text-align: center;
       color: white;
-      z-index: 2;
-      font-size: 4em;
-      letter-spacing: .3em;
-      text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.4); }
-  .container#index__roomList .button__container {
-    position: relative;
-    height: 20vh;
-    width: 100vw;
-    background: #eacda3;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #d6ae7b, #eacda3);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #d6ae7b, #eacda3);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    text-align: center;
-    color: white; }
-    .container#index__roomList .button__container p {
-      position: absolute;
-      font-size: 1.2em;
-      top: 24%;
-      left: 50%;
-      transform: translate3d(-50%, -22%, 0); }
-    .container#index__roomList .button__container div {
-      position: absolute;
-      top: 65%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
-      border: 2px solid #fff;
-      border-radius: 30px;
-      width: 25%;
-      margin: 0 auto;
-      line-height: 1.6; }
-      .container#index__roomList .button__container div:hover {
-        cursor: pointer;
-        background: rgba(187, 164, 130, 0.4); }
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 -1px 10px #eee;
+      border-radius: 20px 20px 0 0; }
+      .container#index__roomList .header__container .button__container .typewriter {
+        overflow: hidden;
+        border-right: .15em solid orange;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .1em;
+        animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite; }
+      .container#index__roomList .header__container .button__container p {
+        z-index: 9;
+        color: white;
+        display: inline-block;
+        position: relative;
+        font-size: 1.5em;
+        top: 21%;
+        left: 35%;
+        transform: translate3d(-50%, -22%, 0); }
+      .container#index__roomList .header__container .button__container div {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        border: 2px solid #e8e8e8;
+        border-radius: 30px;
+        width: 25%;
+        margin: 0 auto;
+        line-height: 1.6;
+        z-index: 2;
+        color: white;
+        background: rgba(246, 235, 218, 0.7);
+        box-shadow: inset 0 0 10px rgba(204, 204, 204, 0.5); }
+        .container#index__roomList .header__container .button__container div:hover {
+          cursor: pointer;
+          background: rgba(246, 235, 218, 0.6); }
   .container#index__roomList .roomlist__container {
     position: relative;
     height: 30vh;
@@ -492,5 +502,18 @@ body {
             .container#index__roomList .roomlist__container ul.roomlist li.roomlist__elem .roomlist__elem--lock img:hover {
               cursor: pointer;
               background: rgba(204, 204, 204, 0.4); }
+
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+    to {
+    border-color: transparent; }
+  50% {
+    border-color: orange; } }
 
 /*# sourceMappingURL=main.css.map */
