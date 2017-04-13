@@ -645,6 +645,7 @@ body {
             z-index: 2;
             font-size: 4em;
             letter-spacing: .3em;
+            text-shadow: 10px 10px 10px rgba(255,255,255,0.4);
         }
     } // 中间创建房间页面
     .button__container {
@@ -689,14 +690,16 @@ body {
         background: rgba(246, 235, 218, .7);
         color: white;
         padding: 3vh;
-        ul {
+        ul.roomlist {
+            position: relative;
             width: 100%;
             height: 100%;
             overflow: scroll;
             white-space: nowrap;
             text-align: center;
             vertical-align: middle;
-            li {
+            li.roomlist__elem {
+                vertical-align: text-bottom;
                 position: relative;
                 text-align: center;
                 display: inline-block;
@@ -709,22 +712,32 @@ body {
                 &:hover {
                     box-shadow: inset 0 0 10px rgba(204, 204, 204, .8);
                 }
-                p {
-                        position: relative;
-                        top: 5vh;
+                .roomlist__elem--logo {
+                    position: relative;
+                    height: 10vh;
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate3d(-50%, -50%, 0);
+                    }
+                }
+                .roomlist__elem--title {
+                    p {
                         color: #888;
                         font-weight: bold;
                     }
-                &.locked {
-                    img.room {
-                        position: relative;
-                        top: 3vh;
-                    }
-                    img.lock {
-                        position: relative;
-                        top: 7vh;
-                        width: 40px;
-                        height: 40px;
+                }
+                .roomlist__elem--lock {
+                    position: relative;
+                    height: 9vh;
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate3d(-50%, -50%, 0px);
+                        height: 5vh;
+                        width: 5vh;
                         border: 2px solid #d4af7a;
                         padding: 5px;
                         border-radius: 50%;
@@ -733,22 +746,51 @@ body {
                             background: rgba(204, 204, 204, .4);
                         }
                     }
-                    .roomlist__elem--password {
-                        display: none;
-                        p {
-                            font-size: .5em;
-                            font-weight: normal;
-                            position: relative;
-                            top: 7.5vh;
-                            color: #999;
-                        }
-                        input {
-                            position: relative;
-                            top: 8.5vh;
-                            width: 85%;
-                            margin: 0 auto;
-                            border-bottom: 3px solid rgba(255, 255, 255, .4);
-                        }
+                } // &.unlocked{
+                // }
+                // .room__title {
+                //     position: relative;
+                //     top: 5vh;
+                //     color: #888;
+                //     font-weight: bold;
+                // }
+                // img.room {
+                //     position: relative;
+                //     top: 3vh;
+                // }
+                // img.lock {
+                //     position: relative;
+                //     top: 7vh;
+                //     width: 5vh;
+                //     height: 5vh;
+                //     border: 2px solid #d4af7a;
+                //     padding: 5px;
+                //     border-radius: 50%;
+                //     &:hover {
+                //         cursor: pointer;
+                //         background: rgba(204, 204, 204, .4);
+                //     }
+                // }
+                .roomlist__elem--password {
+                    display: none;
+                    position: relative;
+                    height: 9vh;
+                    top: 1vh;
+                    left: 50%;
+                    transform: translate3d(-50%, 0, 0);
+                    .roomlist__elem--caption {
+                        font-size: .5em;
+                        font-weight: normal;
+                        position: relative;
+                        top: 1.5vh;
+                        color: #999;
+                    }
+                    input {
+                        position: relative;
+                        top: 2.5vh;
+                        width: 85%;
+                        margin: 0 auto;
+                        border-bottom: 3px solid rgba(255, 255, 255, .4);
                     }
                 }
             }

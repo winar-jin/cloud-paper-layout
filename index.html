@@ -23,42 +23,132 @@
         </section>
         <section class="roomlist__container">
             <ul class="roomlist">
-                <li class="roomlist__elem locked">
-                    <img class="room" src="img/room.png">
-                    <p>房间一</p>
-                    <img class="lock" src="img/lock.png">
+                <li class="roomlist__elem">
+                    <div class="roomlist__elem--logo">
+                        <img class="room" src="img/room.png">
+                    </div>
+                    <div class="roomlist__elem--title">
+                        <p class="room__title">房间一</p>
+                    </div>
+                    <div class="roomlist__elem--lock">
+                        <img class="lock" src="img/lock.png">
+                    </div>
                     <div class="roomlist__elem--password">
-                        <p>请输入房间令牌</p>
+                        <p class="roomlist__elem--caption">请输入房间令牌</p>
                         <input type="text" autofocus>
                     </div>
                 </li>
-                <li class="roomlist__elem unlocked">
-                    <!--<img class="room" src="img/room.png">
-                    <p>房间一</p>
-                    <img class="lock" src="img/lock.png">
+                <li class="roomlist__elem">
+                    <div class="roomlist__elem--logo">
+                        <img class="room" src="img/room.png">
+                    </div>
+                    <div class="roomlist__elem--title">
+                        <p class="room__title">房间一</p>
+                    </div>
+                    <div class="roomlist__elem--lock">
+                        <img class="lock" src="img/right.png">
+                    </div>
+                </li>
+                <li class="roomlist__elem">
+                    <div class="roomlist__elem--logo">
+                        <img class="room" src="img/room.png">
+                    </div>
+                    <div class="roomlist__elem--title">
+                        <p class="room__title">房间一</p>
+                    </div>
+                    <div class="roomlist__elem--lock">
+                        <img class="lock" src="img/lock.png">
+                    </div>
                     <div class="roomlist__elem--password">
-                        <p>请输入房间令牌</p>
+                        <p class="roomlist__elem--caption">请输入房间令牌</p>
                         <input type="text" autofocus>
-                    </div>-->
+                    </div>
+                </li>
+                <li class="roomlist__elem">
+                    <div class="roomlist__elem--logo">
+                        <img class="room" src="img/room.png">
+                    </div>
+                    <div class="roomlist__elem--title">
+                        <p class="room__title">房间一</p>
+                    </div>
+                    <div class="roomlist__elem--lock">
+                        <img class="lock" src="img/right.png">
+                    </div>
+                </li>
+                <li class="roomlist__elem">
+                    <div class="roomlist__elem--logo">
+                        <img class="room" src="img/room.png">
+                    </div>
+                    <div class="roomlist__elem--title">
+                        <p class="room__title">房间一</p>
+                    </div>
+                    <div class="roomlist__elem--lock">
+                        <img class="lock" src="img/lock.png">
+                    </div>
+                    <div class="roomlist__elem--password">
+                        <p class="roomlist__elem--caption">请输入房间令牌</p>
+                        <input type="text" autofocus>
+                    </div>
+                </li>
+                <li class="roomlist__elem">
+                    <div class="roomlist__elem--logo">
+                        <img class="room" src="img/room.png">
+                    </div>
+                    <div class="roomlist__elem--title">
+                        <p class="room__title">房间一</p>
+                    </div>
+                    <div class="roomlist__elem--lock">
+                        <img class="lock" src="img/right.png">
+                    </div>
                 </li>
             </ul>
         </section>
     </main>
     <script>
         document.querySelector('.roomlist__elem img.lock').addEventListener('click', (e) => {
-            e.target.style.display = 'none';
+            document.querySelector('.roomlist__elem--lock').style.display = 'none';
             document.querySelector('.roomlist__elem div.roomlist__elem--password').style.display = 'block';
-            document.querySelector('.roomlist__elem div.roomlist__elem--password input').foucs = true;
         });
-        document.body.addEventListener('click', (e) => {
-            if (document.querySelector('.roomlist__elem div.roomlist__elem--password').style.display == 'block') {
-                // document.querySelector('.roomlist__elem div.roomlist__elem--password').style.display = 'none';
-                // document.querySelector('.roomlist__elem img.lock').style.display = 'inline-block';
-                e.stopPropagation();
-                e.preventDefault();
-                console.log('lll');
+        const title = document.querySelector('.container#index__roomList .header__container');
+        const text = title.querySelector('h1');
+        const walk = 60; // 100px
+
+        function shadow(e) {
+            const {
+                offsetWidth: width,
+                offsetHeight: height
+            } = title;
+            let {
+                offsetX: x,
+                offsetY: y
+            } = e;
+
+            if (this !== e.target) {
+                x = x + e.target.offsetLeft;
+                y = y + e.target.offsetTop;
             }
-        });
+
+            const xWalk = Math.round((x / width * walk) - (walk / 2));
+            const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+            text.style.textShadow =
+                `
+      
+      ${yWalk}px ${xWalk * -1}px 10px rgba(204,204,204,0.4)
+    `;
+
+        }
+
+        title.addEventListener('mousemove', shadow);
+        // document.body.addEventListener('click', (e) => {
+        //     if (document.querySelector('.roomlist__elem div.roomlist__elem--password').style.display == 'block') {
+        //         // document.querySelector('.roomlist__elem div.roomlist__elem--password').style.display = 'none';
+        //         // document.querySelector('.roomlist__elem img.lock').style.display = 'inline-block';
+        //         e.stopPropagation();
+        //         e.preventDefault();
+        //         console.log('lll');
+        //     }
+        // });
     </script>
 </body>
 
