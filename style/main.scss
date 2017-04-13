@@ -385,7 +385,59 @@ body {
     margin: 0 auto;
     background: #fff; // 表单样式
     position: relative; // 标题页面
-    // 二级标题
+    .roomlist__elem--password {
+        display: none;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        z-index: 3;
+        background: rgba(234, 205, 163, 0.5);
+        #popup {
+            transition: all 2s ease-in-out;
+            height: 40vh;
+            text-align: center;
+            width: 40vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background: rgba(255,255,255, 0.8);
+            border-radius: 5vh;
+            &.slidein{
+                transition: all 2s ease-in-out;
+                
+            }
+            .modal-content {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                p{
+                    font-weight: bold;
+                    color: #666;
+                }
+                input {
+                    width: 60%;
+                    border-bottom-width: 2px;
+                    margin: 1.1em auto;
+                    display: block;
+                }
+                button {
+                    border: 2px solid white;
+                    width: 50%;
+                    line-height: 2.5;
+                    color: white;
+                    background: #E2C6A2;
+                    border-radius: 20px;
+                    font-size: .7em;
+                    margin-top: 1em;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    } // 二级标题
     h2 {
         width: 100%;
         font-size: 26px;
@@ -433,7 +485,7 @@ body {
             z-index: 2;
             font-size: 4em;
             letter-spacing: .3em;
-            text-shadow: 10px 10px 10px rgba(255,255,255,0.4);
+            text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.4);
         }
     } // 中间创建房间页面
     .button__container {
@@ -533,28 +585,6 @@ body {
                             cursor: pointer;
                             background: rgba(204, 204, 204, .4);
                         }
-                    }
-                } 
-                .roomlist__elem--password {
-                    display: none;
-                    position: relative;
-                    height: 9vh;
-                    top: 1vh;
-                    left: 50%;
-                    transform: translate3d(-50%, 0, 0);
-                    .roomlist__elem--caption {
-                        font-size: .5em;
-                        font-weight: normal;
-                        position: relative;
-                        top: 1.5vh;
-                        color: #999;
-                    }
-                    input {
-                        position: relative;
-                        top: 2.5vh;
-                        width: 85%;
-                        margin: 0 auto;
-                        border-bottom: 3px solid rgba(255, 255, 255, .4);
                     }
                 }
             }

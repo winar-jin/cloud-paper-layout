@@ -318,6 +318,50 @@ body {
   margin: 0 auto;
   background: #fff;
   position: relative; }
+  .container#index__roomList .roomlist__elem--password {
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 3;
+    background: rgba(234, 205, 163, 0.5); }
+    .container#index__roomList .roomlist__elem--password #popup {
+      transition: all 2s ease-in-out;
+      height: 40vh;
+      text-align: center;
+      width: 40vw;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 5vh; }
+      .container#index__roomList .roomlist__elem--password #popup.slidein {
+        transition: all 2s ease-in-out; }
+      .container#index__roomList .roomlist__elem--password #popup .modal-content {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0); }
+        .container#index__roomList .roomlist__elem--password #popup .modal-content p {
+          font-weight: bold;
+          color: #666; }
+        .container#index__roomList .roomlist__elem--password #popup .modal-content input {
+          width: 60%;
+          border-bottom-width: 2px;
+          margin: 1.1em auto;
+          display: block; }
+        .container#index__roomList .roomlist__elem--password #popup .modal-content button {
+          border: 2px solid white;
+          width: 50%;
+          line-height: 2.5;
+          color: white;
+          background: #E2C6A2;
+          border-radius: 20px;
+          font-size: .7em;
+          margin-top: 1em; }
+          .container#index__roomList .roomlist__elem--password #popup .modal-content button:hover {
+            cursor: pointer; }
   .container#index__roomList h2 {
     width: 100%;
     font-size: 26px;
@@ -448,24 +492,5 @@ body {
             .container#index__roomList .roomlist__container ul.roomlist li.roomlist__elem .roomlist__elem--lock img:hover {
               cursor: pointer;
               background: rgba(204, 204, 204, 0.4); }
-        .container#index__roomList .roomlist__container ul.roomlist li.roomlist__elem .roomlist__elem--password {
-          display: none;
-          position: relative;
-          height: 9vh;
-          top: 1vh;
-          left: 50%;
-          transform: translate3d(-50%, 0, 0); }
-          .container#index__roomList .roomlist__container ul.roomlist li.roomlist__elem .roomlist__elem--password .roomlist__elem--caption {
-            font-size: .5em;
-            font-weight: normal;
-            position: relative;
-            top: 1.5vh;
-            color: #999; }
-          .container#index__roomList .roomlist__container ul.roomlist li.roomlist__elem .roomlist__elem--password input {
-            position: relative;
-            top: 2.5vh;
-            width: 85%;
-            margin: 0 auto;
-            border-bottom: 3px solid rgba(255, 255, 255, 0.4); }
 
 /*# sourceMappingURL=main.css.map */
