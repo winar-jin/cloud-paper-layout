@@ -8,11 +8,8 @@
 
 body {
     background: #1e3c72;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2a5298, #1e3c72);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 }
 
@@ -494,22 +491,13 @@ body {
             background: rgba(255, 255, 255, .4);
             box-shadow: 0 -1px 10px #eee;
             border-radius: 20px 20px 0 0;
-            .typewriter {
-                overflow: hidden;
-                border-right: .15em solid orange;
-                white-space: nowrap;
-                margin: 0 auto;
-                letter-spacing: .1em;
-                animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
-            }
             p {
                 z-index: 9;
                 color: white;
-                display: inline-block;
                 position: relative;
                 font-size: 1.5em;
                 top: 21%;
-                left: 35%;
+                left: 50%;
                 transform: translate3d(-50%, -22%, 0);
             }
             div {
@@ -600,27 +588,5 @@ body {
                 }
             }
         }
-    }
-}
-
-@keyframes typing {
-    from {
-        width: 0
-    }
-    to {
-        width: 100%
-    }
-}
-
-
-/* The typewriter cursor effect */
-
-@keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent
-    }
-    50% {
-        border-color: orange;
     }
 }
