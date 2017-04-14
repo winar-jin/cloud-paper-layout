@@ -127,7 +127,6 @@ body {
     background: #d4af7a;
     width: 50%; }
 #room .paint {
-  overflow: hidden;
   width: 1024px;
   height: 100%;
   position: absolute;
@@ -142,7 +141,8 @@ body {
     display: none;
     position: absolute;
     top: 0;
-    left: 0; }
+    left: 0;
+    z-index: 2; }
     #room .paint .paint__tools--cursor.pencil {
       display: block;
       width: 20px;
@@ -158,6 +158,13 @@ body {
       background: rgba(200, 200, 200, 0.4);
       border-radius: 5px 5px 15px 5px;
       transform: translate3d(-50%, -50%, 0) rotate(40deg); }
+    #room .paint .paint__tools--cursor.dot {
+      display: block;
+      width: 10px;
+      height: 10px;
+      box-shadow: 0 0 10px rgba(204, 204, 204, 0.5);
+      background: black;
+      border-radius: 50%; }
   #room .paint .paint__tool {
     width: 50px;
     background: white;
@@ -174,7 +181,7 @@ body {
       position: relative;
       width: 50px;
       height: 50px; }
-      #room .paint .paint__tool li:first-child {
+      #room .paint .paint__tool li:not(:last-child) {
         border-bottom: 1px solid rgba(204, 204, 204, 0.8); }
       #room .paint .paint__tool li:hover {
         cursor: pointer;
@@ -185,9 +192,10 @@ body {
           animation-timing-function: ease-in-out;
           animation-delay: 0; }
       #room .paint .paint__tool li img {
+        box-sizing: content-box;
         width: 30px;
         height: 30px;
-        margin: 10px;
+        padding: 10px;
         position: relative;
         top: 0px; }
       #room .paint .paint__tool li .slider__range--container {
@@ -197,22 +205,16 @@ body {
         top: 0px;
         left: -45px;
         height: 231px;
-        width: 30px; }
+        width: 30px;
+        display: none; }
         #room .paint .paint__tool li .slider__range--container .colorpicker {
           position: absolute;
-          width: 30px;
-          border-radius: 50%;
-          height: 30px;
-          background: rgba(169, 140, 97, 0.5);
-          right: -1px;
+          z-index: 2;
+          right: -4px;
           bottom: -7px;
           box-shadow: 0 0 25px #ccc; }
           #room .paint .paint__tool li .slider__range--container .colorpicker.ClassyColor {
             font-size: 4px !important; }
-        #room .paint .paint__tool li .slider__range--container.pencil {
-          display: none; }
-        #room .paint .paint__tool li .slider__range--container.eraser {
-          display: none; }
         #room .paint .paint__tool li .slider__range--container.active {
           display: block; }
         #room .paint .paint__tool li .slider__range--container::after {

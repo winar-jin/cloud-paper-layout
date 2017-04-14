@@ -53,6 +53,23 @@
                             <input class="slider__vertical" type="range" min="0" max="100" />
                         </div>
                     </li>
+                    <li>
+                        <img src="img/circle.png">
+                        <div class="slider__range--container circle">
+                            <input class="slider__vertical" type="range" min="0" max="100" />
+                            <div class="colorpicker"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="img/rectangle.png">
+                        <div class="slider__range--container rectangle">
+                            <input class="slider__vertical" type="range" min="0" max="100" />
+                            <div class="colorpicker"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="img/clean.png">
+                    </li>
                 </ul>
             </aside>
         </section>
@@ -62,6 +79,7 @@
     <script>
         document.body.addEventListener('click',() => {
             Array.from(document.querySelectorAll('.slider__range--container')).forEach(element => {
+                console.log(element);
                 if(element.className.includes('active')){
                     element.classList.remove('active');
                 }
@@ -115,7 +133,21 @@
             document.querySelector('span.paint__tools--cursor').style.display = 'block';
         });
         $(document).ready(function () {
-            $('.slider__range--container .colorpicker').ClassyColor({
+            $('.slider__range--container.pencil .colorpicker').ClassyColor({
+                color: '#A98C61',
+                colorSpace: 'rgba',
+                labels: true,
+                staticComponents: true,
+                displayColor: 'css',
+            });
+            $('.slider__range--container.circle .colorpicker').ClassyColor({
+                color: '#A98C61',
+                colorSpace: 'rgba',
+                labels: true,
+                staticComponents: true,
+                displayColor: 'css',
+            });
+            $('.slider__range--container.rectangle .colorpicker').ClassyColor({
                 color: '#A98C61',
                 colorSpace: 'rgba',
                 labels: true,
